@@ -1,13 +1,11 @@
 package org.cskj.boot.shiro.bean;
 
-import java.util.List;
-
-public class Role {
+public class Permission {
 
 	private int id;
 	private String name;
 	private String content;
-	private List<RolePermission> rolePermission;
+	private String url;
 
 	public int getId() {
 		return id;
@@ -33,18 +31,17 @@ public class Role {
 		this.content = content;
 	}
 
-	public List<RolePermission> getRolePermission() {
-		return rolePermission;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setRolePermission(List<RolePermission> rolePermission) {
-		this.rolePermission = rolePermission;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", name=" + name + ", content=" + content + ", rolePermission=" + rolePermission
-				+ "]";
+		return "Permission [id=" + id + ", name=" + name + ", content=" + content + ", url=" + url + "]";
 	}
 
 }

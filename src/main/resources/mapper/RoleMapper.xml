@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cskj.boot.shiro.mapper.RoleMapper">
+	<resultMap type="role" id="baseRoleMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="content" property="content"/>
+		<collection property="rolePermission" ofType="rolePermission" resultMap="baseRolePermissionMap"></collection>
+	</resultMap>
+	
+	<resultMap type="rolePermission" id="baseRolePermissionMap">
+		<id column="rpid" property="id"/>
+		<association property="permission" javaType="permission" resultMap="basePermissionMap"></association>
+	</resultMap>
+	
+	<resultMap type="permission" id="basePermissionMap">
+		<id column="pid" property="id"/>
+		<result column="pname" property="name"/>
+		<result column="pcontent" property="content"/>
+		<result column="url" property="url"/>
+	</resultMap>
+	
+	<select id="queryAllRole" resultMap="baseRoleMap">
+		select r.*,rp.id rpid,p.name pname,p.id pid,p.content pcontent,url from role r left join role_permission rp on r.id = rp.rid left join permission p on rp.pid = p.id
+	</select>
+</mapper>

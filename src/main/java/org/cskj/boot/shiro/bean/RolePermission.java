@@ -1,10 +1,10 @@
 package org.cskj.boot.shiro.bean;
 
-public class UserRole {
+public class RolePermission {
 
 	private int id;
-	private User user;
 	private Role role;
+	private Permission permission;
 
 	public int getId() {
 		return id;
@@ -12,14 +12,6 @@ public class UserRole {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Role getRole() {
@@ -30,9 +22,17 @@ public class UserRole {
 		this.role = role;
 	}
 
+	public Permission getPermission() {
+		return permission;
+	}
+
+	public void setPermission(Permission permission) {
+		this.permission = permission;
+	}
+
 	@Override
 	public String toString() {
-		return "UserRole [id=" + id + ", user=" + user + ", role=" + role + "]";
+		return "RolePermission [id=" + id + ", role=" + role + ", permission=" + permission + "]";
 	}
 
 }

@@ -20,9 +20,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="role" id="baseRoleMap">
 		<id column="rid" property="id"/>
 		<result column="rname" property="name"/>
-		<result column="desc_" property="desc_"/>
+		<result column="content" property="content"/>
 	</resultMap>
 	<select id="queryAllUser" resultMap="baseUserMap">
 		select u.*,r.id rid,r.name rname,ur.id urid from user u left join user_role ur on u.id = ur.uid left join role r on ur.rid = r.id
 	</select>
+	
+	<insert id="addUser">
+		insert into user values(null,#{name},#{password},#{salt})
+	</insert>
+	<update id="updateUser" parameterType="user">
+		update user set name=#{name},password=#{password},salt=#{salt} where id =#{id}
+	</update>
+	
+	<delete id="deleteUser">
+		delete from user where id = #{uid}
+	</delete>
 </mapper>
