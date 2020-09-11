@@ -19,15 +19,8 @@ public class RoleController {
 	private RoleService roleService;
 
 	@GetMapping(value = "queryAllRole")
-	public List<Role> queryAllRole(HttpServletResponse response) throws UnsupportedEncodingException {
-		List<Role> list = roleService.queryAllRole();
-		System.out.println(list);
-		for (Role role : list) {
-			String desc = role.getContent();
-			desc = new String(desc.getBytes("iso-8859-1"),"utf-8");
-			System.out.println(desc);
-		}
-		return list;
+	public List<Role> queryAllRole() {
+		return roleService.queryAllRole();
 	}
 
 	/*
